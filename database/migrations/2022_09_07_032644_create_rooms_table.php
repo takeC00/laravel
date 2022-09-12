@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('price')->nullable();
             $table->string('introduction')->nullable();
             $table->string('adress')->nullable();
+            $table->string('image');
         });
     }
 

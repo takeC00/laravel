@@ -30,7 +30,11 @@
           <td><p>{{ $room->price }}</p></td>
           <td><p>{{ $room->adress }}</p></td>
           <td><p>{{ $room->introduction }}</p></td>
-          <td><img src=" {{ asset('storage/' . $room->image) }} " height="70" width="90"></td>
+          <td>
+            <a href="{{ route('rooms.show', $room) }}">
+              <img src=" {{ asset('storage/' . $room->image) }} " height="70" width="90">
+            </a>
+          </td>
           <td><a href ="{{ route('rooms.edit', $room) }}"><button>編集</button></a></td>
           <td>
             <form action="{{ route('rooms.destroy', $room->id) }}" 
