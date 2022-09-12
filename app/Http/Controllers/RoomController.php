@@ -41,21 +41,21 @@ class RoomController extends Controller
     {
       $filename=$request->image->getClientOriginalName();
       $img=$request->image->storeAs('',$filename, 'public'); 
-
+      
       //Create使う場合
-      $room = Room::create([
+      Room::create([
         'name' => $request->name,
         'price' => $request->price,
         'introduction' => $request->introduction,
         'adress' => $request->adress,
         'image' => $img
+      ]);
 
       //New->save する場合
       //$room = new Room;
       //$room->fill(
       //$request->safe(['name', 'price', 'introduction', 'adress', 'image'])
       //)->save();
-      ]);
 
       return redirect()
         ->route('rooms.index')
@@ -68,7 +68,7 @@ class RoomController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Room $room)
     {
       
     }
@@ -79,9 +79,8 @@ class RoomController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Room $room)
     { 
-      $room = Room::find($id);
       return view('rooms.edit', ['room'=>$room]);
     }
 
@@ -92,12 +91,11 @@ class RoomController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreRoomRequest $request, $id)
+    public function update(StoreRoomRequest $request, Room $room)
     {
       $filename=$request->image->getClientOriginalName();
       $img=$request->image->storeAs('',$filename, 'public'); 
 
-      $room = Room::find($id);
       $room->name =$request->name;
       $room->price =$request->price;
       $room->introduction =$request->introduction;
@@ -122,9 +120,9 @@ class RoomController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Room $room)
     {
-      Room::where('id', $id)->delete();
+      $room->delete();
       return redirect()->route('rooms.index')->with('success', '削除完了しました');
     }
 };

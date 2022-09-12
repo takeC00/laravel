@@ -13,7 +13,7 @@ class Kernel extends HttpKernel
      *
      * @var array<int, class-string|string>
      */
-    //アプリケーション全体に作用させる
+    //アプリケーション全体に作用させるミドルウェアの登録
     protected $middleware = [
         // \App\Http\Middleware\TrustHosts::class,
         \App\Http\Middleware\TrustProxies::class,
@@ -29,6 +29,8 @@ class Kernel extends HttpKernel
      *
      * @var array<string, array<int, class-string|string>>
      */
+
+    //特定のルートのみ作用させたいミドルウェアを登録
     protected $middlewareGroups = [
         'web' => [
             \App\Http\Middleware\EncryptCookies::class,

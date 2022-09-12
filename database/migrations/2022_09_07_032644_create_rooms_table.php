@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('name')->nullable(false)->change();
-            $table->integer('price')->nullable(false)->change();
-            $table->string('introduction')->nullable(false)->change();
-            $table->string('adress')->nullable(false)->change();
+            $table->string('name')->nullable();
+            $table->integer('price')->nullable();
+            $table->string('introduction')->nullable();
+            $table->string('adress')->nullable();
         });
     }
 
