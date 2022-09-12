@@ -31,7 +31,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 //ROOM
-//resoucesだと、rooms/1/edit　のような形だったので、 rooms/1/edit　となるよう修正。
+//resoucesだと、rooms/1/edit　のような形だったので、 rooms/1/edit　となるよう修正
 Route::get('/rooms/edit/{id}', [RoomController::class, 'edit']);
 
 Route::resource('rooms', RoomController::class);
