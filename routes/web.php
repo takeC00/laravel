@@ -34,7 +34,8 @@ Route::get('/dashboard', function () {
 //resoucesだと、rooms/1/edit　のような形だったので、 rooms/1/edit　となるよう修正
 Route::get('/rooms/edit/{id}', [RoomController::class, 'edit']);
 
-Route::resource('rooms', RoomController::class);
+Route::resource('rooms', RoomController::class)
+->middleware('auth');
 
 
 //  コントローラーが複数ある場合は

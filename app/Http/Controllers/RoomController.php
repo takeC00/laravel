@@ -48,7 +48,8 @@ class RoomController extends Controller
         'price' => $request->price,
         'introduction' => $request->introduction,
         'adress' => $request->adress,
-        'image' => $img
+        'image' => $img,
+        'user_id' => $request->userId()
       ]);
 
       //New->save する場合
@@ -124,5 +125,10 @@ class RoomController extends Controller
     {
       $room->delete();
       return redirect()->route('rooms.index')->with('success', '削除完了しました');
+    }
+
+    public function userId(): int
+    {
+      return $this->user()->id;
     }
 };
