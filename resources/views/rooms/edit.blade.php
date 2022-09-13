@@ -24,7 +24,7 @@
     <textarea id="room-introduction" type="text" name="introduction">{{ $room->introduction }}</textarea><br>
     <label for="room-image">画像</label>
     <img src=" {{ asset('storage/' . $room->image) }} " height="70" width="90"><br>
-    <input id="room-image" type="file" name="image"><br>
+    <input id="room-image" type="file" name="image" value="aa"><br>
     <button type="submit">登録</button>
 </div>
 

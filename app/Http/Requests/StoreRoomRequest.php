@@ -32,5 +32,4 @@ class StoreRoomRequest extends FormRequest
         'image'=>'required|image',
       ];
     }
-
 }

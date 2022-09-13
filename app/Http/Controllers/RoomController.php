@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Room;
 use App\Http\Requests\StoreRoomRequest;
 use App\Http\Controllers\InterventionImage;
+use App\Http\Requests\UpdateRoomRequest;
 use Illuminate\Support\Facades\Auth;
-
 class RoomController extends Controller
 {
     /**
@@ -39,7 +39,7 @@ class RoomController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreRoomRequest $request)
+    public function store(UpdateRoomRequest $request)
     {
       $filename=$request->image->getClientOriginalName();
       $img=$request->image->storeAs('',$filename, 'public'); 
@@ -99,16 +99,20 @@ class RoomController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreRoomRequest $request, Room $room)
-    {
-      $filename=$request->image->getClientOriginalName();
-      $img=$request->image->storeAs('',$filename, 'public'); 
-
+    public function update(UpdateRoomRequest $request, Room $room)
+    { 
+      if ($request->image != null)
+      {
+        $filename=$request->image->getClientOriginalName();
+        $img=$request->image->storeAs('',$filename, 'public');
+        $room->image = $img; 
+      }
+      
       $room->name =$request->name;
       $room->price =$request->price;
       $room->introduction =$request->introduction;
       $room->adress =$request->adress;
-      $room->image = $img;
+      
 
       $room->save();
 

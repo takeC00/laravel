@@ -28,7 +28,7 @@ class UpdateRoomRequest extends FormRequest
         'price'=>'required|integer',
         'introduction'=>'required',
         'adress'=>'required',
-        'image'=>'required|image',
+        
       ];
     }
     public function room(): string
