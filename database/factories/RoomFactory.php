@@ -17,8 +17,12 @@ class RoomFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => 1,
-            'content' => $this->faker->realText(100)
-        ];
+          'user_id' => 1,
+          'introduction' => $this->faker->realText(100),
+          'name' => 'hoge',
+          'price' => 100,
+          'adress' => 'hoge',
+          'image' => 'hoge',
+        ]; 
     }
 }

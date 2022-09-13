@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Room;
 use App\Http\Requests\StoreRoomRequest;
 use App\Http\Controllers\InterventionImage;
+use Illuminate\Support\Facades\Auth;
 
 class RoomController extends Controller
 {
@@ -42,6 +43,10 @@ class RoomController extends Controller
       $filename=$request->image->getClientOriginalName();
       $img=$request->image->storeAs('',$filename, 'public'); 
       
+      //UserIdの取得
+      $userId = Auth::id();
+      $postUser = Auth::user()->name;
+
       //Create使う場合
       Room::create([
         'name' => $request->name,
@@ -49,7 +54,8 @@ class RoomController extends Controller
         'introduction' => $request->introduction,
         'adress' => $request->adress,
         'image' => $img,
-        'user_id' => $request->userId()
+        'user_id' =>$userId,
+        'post_user' => $postUser
       ]);
 
       //New->save する場合

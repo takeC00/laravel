@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Room extends Model
 {
   use HasFactory;
-  protected $fillable = ['name', 'price', 'introduction', 'adress', 'image'];
+  protected $fillable = ['name', 'price', 'introduction', 'adress', 'image', 'user_id', 'post_user'];
   
 }

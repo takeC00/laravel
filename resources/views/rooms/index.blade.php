@@ -17,13 +17,14 @@
   @endif
   <div>
     @foreach($rooms as $room)
-      <table>
+      <table border="1">
         <tr>
           <th>名前</th>
           <th>金額</th>
           <th>住所</th>
           <th>紹介文</th>
           <th>画像</th>
+          <th>投稿者</th>
         </tr>
         <tr>
           <td><p>{{ $room->name }}</p></td>
@@ -35,18 +36,19 @@
               <img src=" {{ asset('storage/' . $room->image) }} " height="70" width="90">
             </a>
           </td>
-          <td><a href ="{{ route('rooms.edit', $room) }}"><button>編集</button></a></td>
-          <td>
-            <form action="{{ route('rooms.destroy', $room->id) }}" 
-                  method = "post">
-              @csrf
-              @method('DELETE')
-              <button type="submit">削除</button>
-            </form>
-          </td>
+          <td><p>{{ $room->post_user }}</p></td>
           <hr>
         </tr>
       </table>
+      <div><a href ="{{ route('rooms.edit', $room) }}"><button>編集</button></a></div>
+      <div>
+        <form action="{{ route('rooms.destroy', $room->id) }}" 
+              method = "post">
+          @csrf
+          @method('DELETE')
+          <button type="submit">削除</button>
+        </form>
+      </div>
     @endforeach
     <hr>
   </div>
