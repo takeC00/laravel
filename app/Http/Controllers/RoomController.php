@@ -39,7 +39,7 @@ class RoomController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UpdateRoomRequest $request)
+    public function store(StoreRoomRequest $request)
     {
       $filename=$request->image->getClientOriginalName();
       $img=$request->image->storeAs('',$filename, 'public'); 

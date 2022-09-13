@@ -24,7 +24,7 @@ class UpdateRoomRequest extends FormRequest
     public function rules()
     {
       return [
-        'name'=>'required|string',
+        'name'=>'required|string|max: 20',
         'price'=>'required|integer',
         'introduction'=>'required',
         'adress'=>'required',

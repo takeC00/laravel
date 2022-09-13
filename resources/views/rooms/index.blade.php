@@ -12,9 +12,15 @@
 <body>
   <h1>一覧ページ</h1>
   <h3 style = "text-align: right; padding-right: 20px;">ログインしているユーザー:{{ $postUser->name }}</h3>
+  <form action="{{ route('logout') }}" method="post" style="text-align: right; padding-right: 20px;">
+    @csrf
+    <input type="submit" value="ログアウト">
+  </form>
   @if (session('feedback.success'))
-    <p style="color: green;
-              font-size:large">{{ session('feedback.success') }}</p>
+    <p style="color: green; font-size:large">{{ session('feedback.success') }}</p>
+  @endif
+  @if (session('success'))
+    <p style="color: red; font-size:large">{{ session('success') }}</p>
   @endif
   <div>
     @foreach($postUser->rooms as $room)
