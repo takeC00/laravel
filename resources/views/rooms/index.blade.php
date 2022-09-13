@@ -11,6 +11,7 @@
 </head>
 <body>
   <h1>一覧ページ</h1>
+  <h3 style = "text-align: right; padding-right: 20px;">ログインしているユーザー:{{ $postUser->name }}</h3>
   @if (session('feedback.success'))
     <p style="color: green;
               font-size:large">{{ session('feedback.success') }}</p>

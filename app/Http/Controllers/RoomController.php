@@ -17,11 +17,12 @@ class RoomController extends Controller
      */
     public function index()
     {
+      $postUser = Auth::user();
       $rooms = Room::all();
       return view('rooms.index')
-        ->with('rooms', $rooms);
+        ->with('rooms', $rooms)
+        ->with('postUser', $postUser);
     }
-
     /**
      * Show the form for creating a new resource.
      *
