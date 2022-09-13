@@ -17,7 +17,7 @@
               font-size:large">{{ session('feedback.success') }}</p>
   @endif
   <div>
-    @foreach($rooms as $room)
+    @foreach($postUser->rooms as $room)
       <table border="1">
         <tr>
           <th>名前</th>
