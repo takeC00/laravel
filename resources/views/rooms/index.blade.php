@@ -11,7 +11,7 @@
 </head>
 <body>
   <h1>一覧ページ</h1>
-  <h3 style = "text-align: right; padding-right: 20px;">ログインしているユーザー:{{ $postUser->name }}</h3>
+  <h3 style = "text-align: right; padding-right: 20px;"><a href="{{ route('users.index') }}">ログインしているユーザー:{{ $postUser->name }}</a></h3>
   <form action="{{ route('logout') }}" method="post" style="text-align: right; padding-right: 20px;">
     @csrf
     <input type="submit" value="ログアウト">

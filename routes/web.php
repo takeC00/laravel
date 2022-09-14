@@ -37,17 +37,9 @@ Route::get('/rooms/edit/{id}', [RoomController::class, 'edit']);
 Route::resource('rooms', RoomController::class)
 ->middleware('auth');
 
-
-//  コントローラーが複数ある場合は
-//  Route::resouces([
-//    'Rooms' => RoomController::class,
-//    'User' => Usercontroller::class,
-//  ]);
-
-
 //USER
-
-
+Route::resource('users', UserController::class)
+->middleware('auth');
 
 
 
