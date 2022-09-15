@@ -40,7 +40,7 @@
           <td><p>{{ $room->introduction }}</p></td>
           <td>
             <a href="{{ route('rooms.show', $room) }}">
-              <img src=" {{ asset('storage/' . $room->image) }} " height="70" width="90">
+              <img src=" {{ Storage::url($room->image) }} " height="70" width="90">
             </a>
           </td>
           <td><p>{{ $room->post_user }}</p></td>

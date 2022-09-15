@@ -8,6 +8,9 @@ use App\Http\Requests\StoreRoomRequest;
 use App\Http\Controllers\InterventionImage;
 use App\Http\Requests\UpdateRoomRequest;
 use Illuminate\Support\Facades\Auth;
+
+
+
 class RoomController extends Controller
 {
     /**
@@ -42,7 +45,7 @@ class RoomController extends Controller
     public function store(StoreRoomRequest $request)
     {
       $filename=$request->image->getClientOriginalName();
-      $img=$request->image->storeAs('',$filename, 'public'); 
+      $img=$request->image->storeAs('/room',$filename, 'public'); 
       
       //UserIdの取得
       $userId = Auth::id();
@@ -104,7 +107,7 @@ class RoomController extends Controller
       if ($request->image != null)
       {
         $filename=$request->image->getClientOriginalName();
-        $img=$request->image->storeAs('',$filename, 'public');
+        $img=$request->image->storeAs('/rooms',$filename, 'public');
         $room->image = $img; 
       }
       
